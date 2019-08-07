@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+    $(".ko").hide();
+        $("button").click(function(){
+            $(".ko").show();
+            $(".qw").hide();
+        });
+    });
+    </script>
+    <style>
+    .hjk{
+        background-color: lightcyan;
+
+        color:blue;
+    }
+    </style>
+{% endblock %}
+
+{% block body %}
+{% include 'navbar.html' %}
+
+<div class="hjk ">
+<div class="container">
+    <div class="row m-3">
+    <div class="col-md-6 qw">
+        <h1>Login Form</h1>
+        <center><p>{{ er }}</p></center>
+        <form class="form-group p-5" style="width:350px;" method="post" action="">
+            {% csrf_token %}
+            <label>UserName</label>
+            <input type="text" class="form-control" name="t1">
+            <label>Password</label>
+            <input type="password" name="t2" class="form-control">
+            <br>
+            <input type="submit" class="btn btn-outline-dark">
+            <input type="reset" class="btn btn-outline-dark">
+            <button type="button" class="btn btn-dark">Don't have an account?</button>
+        </form>
+    </div>
+
+    <div class="col-md-6 ko">
+        <h1>Sign Up form</h1>
+        <form class="form-group p-5" style="width:450px;" method="post" action="/signup">
+            {% csrf_token %}
+            <label>UserName</label>
+            <input type="text" id="id_use" name="t10" required class="form-control">
+            <label>Name</label>
+            <input type="text" required name="t1" class="form-control">
+            <label>Email</label>
+            <input type="email" required name="t3" class="form-control">
+            <label>Contact Number</label>
+            <input type="number" name="t4" required class="form-control">
+            <label>PIN</label>
+            <input type="number" name="t5" required class="form-control">
+            <label>Address</label>
+            <textarea rows="4" cols="26" name="t6" required class="form-control"></textarea>
+            <label>City</label>
+            <input type="text" name="t7" required class="form-control">
+            <label>State</label>
+            <input type="text" name="t8" required class="form-control">
+            <label>Country</label>
+            <input type="text" name="t9" required class="form-control" value="India">
+            <label>Password</label>
+            <input type="password" name="t11" required class="form-control">
+            <br>
+            <input type="submit" class="btn btn-outline-dark" value="Register">
+            <input type="reset" class="btn btn-dark" value="Reset">
+        </form>
+    </div>
+    </div>
+</div>
+{% block javascript %}
+    <script>
+    console.log("ishu");
+    $("#id_use").change(function () {
+        console.log("ishank");
+            var username=$(this).val();
+            var k=1;
+        $.ajax({
+            type:"GET",
+            url:'/username/',
+            data: {
+              'username': username,
+            },
+            dataType: 'json',
+            success: function (data) {
+              if (data.is_taken) {
+                alert("this Username is already registered");
+
+              }
+            }
+        });
+
+      });
+    </script>
+    {% endblock %}
+    </div>
+{% endblock %}

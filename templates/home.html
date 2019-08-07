@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="top-bar py-1 bg-light">
+    <div class="container">
+    <div class="row ">
+        <div class="col-md-7 my-1 p-1">
+            <a href="#"><i class="fa fa-2x fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-2x fa-twitter px-2"></i></a>
+            <a href="#"><i class="fa fa-2x fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-2x fa-youtube px-2"></i></a>
+        </div>
+        <div class="col-md-5 my-1 p-2">
+            <i class="fa fa-2x fa-phone pr-2"></i>(+91-7985676179)
+            <i class="fa fa-2x fa-envelope px-2"></i>ishu.ishank1411@gmail.com
+
+        </div>
+    </div>
+    </div>
+</div>
+{% include 'navbar.html' %}
+
+        <div class="site-blocks-cover overlay"  data-aos="fade" data-stellar-background-ratio="0.5">
+            <div class="container text-white">
+                <div class="hod">
+                    <h1 class="opo">Shop With Us</h1>
+                    <br>
+                    <p class="oyo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam, doloremque eius ex neque vero?</p>
+
+                <br>
+                <a href="/log" class="btn btn-outline-white text-white">LogIn Yourself</a>
+                <a href="/log" class="btn btn-white text-dark">Create your account</a>
+
+                </div>
+            </div>
+    </div>
+    <div class="container">
+        <div class="row my-3">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <center>
+                <h5 style="color:darkgray">Popular Products</h5>
+                <h1 class="my-3 ok">Our Products</h1>
+                <p style="color:darkgray">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus doloribus ipsum laborum minus natus nulla obcaecati officiis perferendis unde? Expedita labore nesciunt quasi qui ut velit. Amet aperiam nisi voluptate.</p>
+            </center>
+        </div>
+        </div>
+    </div>
+    <div class="container">
+
+
+    <div class="row bg-white">
+        {% for i in m|slice:":4" %}
+            {% for j in i.product_set.all|slice:":2" %}
+                <center>
+                    <div class="item">
+                        <a href="{% url 'app:prod' i.id %}"><img src="{{ j.img.url }}" width="250px" height="250px" class="img m-3"></a><br>
+                        <h3 class="m-3 ">{{ j.name }}</h3>
+                        <p class="m-2">Rs{{ j.price }} Only/</p>
+                    </div>
+                </center>
+            {% endfor %}
+            <br>
+            <hr>
+            {% endfor %}
+    </div>
+    </div>
+    <hr>
+    <br>
+
+    <div id="about">
+    <div class="uy">
+        <div class="container lko bg-light">
+        <center>
+            <h1>About Shopkart.in</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus architecto, aut autem blanditiis cupiditate eaque esse eum expedita illum impedit ipsam iure magnam minus, nam non perferendis quo tempore voluptatibus?</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam cupiditate debitis delectus exercitationem id, iste iure maxime, modi mollitia, neque perferendis possimus quas quidem rem repellat rerum sed sit totam velit! Minus, necessitatibus, similique?</p>
+        </center>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <img src="{% static 'image/pp.jpg' %}" class="img-thumbnail" width="650px" height="auto">
+            </div>
+            <div class="col-md-4 mt-5">
+                <center>
+                    <h2>ShopKart.in</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dolores est et expedita inventore rem temporibus velit voluptates? Commodi culpa ducimus ex magni obcaecati odit optio suscipit. At, id, illo.</p>
+                    <h3>Ishank Chopra</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at commodi cumque delectus dignissimos, ea expedita explicabo facilis impedit incidunt nemo officia omnis provident quod sint sit sunt tempore temporibus!</p>
+                    <br><br>
+                    <div class="box">
+                        <h3>Trusted Merchant</h3>
+                        <p>For 50 years</p>
+                    </div>
+                </center>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <div class="container-fluid bg-light p-5">
+    <center>
+        <h2>GET in Touch/Sign Up Form  </h2>
+        <p>After creating your account we update you with or exciting offers. So hurry up to get latest deals only on shopkart.in</p>
+
+    </center>
+    <div class="form">
+        <center><h3 class="m-4">Contact Form</h3></center>
+        <form class="form-group p-5" method="post" action="">
+            <div class="row ">
+                <div class="col-md-5">
+                    <label>First Name</label>
+                    <input type="text" name="t1" class="form-control">
+                </div>
+                <div class="col-md-5">
+                    <label>Second Name</label>
+                    <input type="text" name="t2" class="form-control">
+                </div>
+
+            </div>
+            <label>Email</label>
+            <input type="email" name="t3" class="form-control">
+            <label>Subject</label>
+            <input type="text" name="t4" class="form-control">
+            <label>Message</label><br>
+            <textarea rows="5" cols="35"></textarea>
+        </form>
+
+    </div>
+    </div>
+{% include 'footer.html' %}
+
+{% endblock %}

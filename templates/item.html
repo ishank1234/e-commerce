@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% include 'navbar.html' %}
+
+{% block body %}
+{% include 'navbar.html' %}
+    {% for i in a %}
+    <div class="row m-2">
+        <div class="col-md-2"></div>
+        <div class="col-md-4 ">
+            <a href="{% url 'app:yoo' i.id %}"><img src="{{ i.img.url }}" class="zom" width="300px" height="300px"></a>
+        </div>
+        <div class="col-md-6">
+            <h3>{{ i.name }}</h3>
+            <h4>{{ i.price }}</h4>
+            <h4>{{ i.features }}</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis error id illum iusto repellat. Consequatur cum, debitis disti</p>
+
+            <h3>Only <u>{{ i.stock }}</u> left. Hurry Up</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <center><a href="{% url 'app:yoo' i.id %}" class="btn btn-outline-dark text-black">Buy Now</a></center>
+                </div>
+            </div>
+        </div>
+    </div>
+        <hr>
+    {% endfor %}
+{% endblock %}
+
+{% include 'footer.html' %}

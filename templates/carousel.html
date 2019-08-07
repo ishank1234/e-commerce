@@ -1,0 +1,54 @@
+<div class="form">
+        <div class="row">
+
+            <div class="col-md-6 text-left">
+                <div class="pop">
+                <center><h2>LogIn form</h2></center>
+                <form class="form-group p-5 text-left" method="post" action="">
+                    {% csrf_token %}
+                    <label>UserName</label>
+                    <input type="text" class="form-control" name="t1">
+                    <label>Password</label>
+                    <input type="password" name="t2" class="form-control">
+                    <br>
+                    <input type="submit" class="btn btn-outline-dark">
+                    <input type="reset" class="btn btn-outline-dark">
+                 </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div style=" display:none">
+                <center><h3 class="m-2">SignUp Form</h3></center>
+                <form class="form-group p-5" method="post" action="">
+                    {% csrf_token %}
+                    <label>Name</label>
+                    <input type="text" name="t1" class="form-control">
+                    <label>Email</label>
+                    <input type="email" name="t3" class="form-control">
+                    <label>Contact Number</label>
+                    <input type="number" name="t4" class="form-control">
+                    <label>PIN</label>
+                    <input type="number" name="t5" class="form-control">
+                    <label>Address</label>
+                    <textarea rows="4" cols="26" name="t6" class="form-control"></textarea>
+                    <label>City</label>
+                    <input type="text" name="t7" class="form-control">
+                    <label>State</label>
+                    <input type="text" name="t8" class="form-control">
+                    <label>Country</label>
+                    <input type="text" name="t9" class="form-control">
+                    <label>UserName</label>
+                    <input type="text" name="t10" class="form-control">
+                    <label>Password</label>
+                    <input type="password" name="t11" class="form-control">
+                    <br>
+                    <input type="submit" class="btn btn-outline-dark" value="Register">
+                    <input type="reset" class="btn btn-dark" value="Reset">
+
+            </form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>

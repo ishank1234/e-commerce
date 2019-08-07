@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <style>
+    .picbig{
+        position:absolute;
+        width:0px;
+        -webkit-transition:width 0.3s linear 0s;
+        transition:width 0.3s linear 0s;
+        z-index:10;
+    }
+    .pic:hover + .picbig{
+        width:500px;
+    }
+    </style>
+{% endblock %}
+{% block body %}
+{% include 'navbar.html' %}
+
+<div class="row">
+
+        <div class="col-md-4 m-1">
+            <img src="{{ a.img.url }}" class="img-thumbnail pic" width="300px" height="auto" >
+            <img src="{{ a.img.url }}" class="img-thumbnail picbig" height="auto" >
+
+        </div>
+        <div class="col-md-5">
+            <h3>{{ a.name }}</h3>
+            <p>{{ a.brand }} </p>
+            <hr>
+            <h3 class="text-primary">{{ msg }}</h3>
+
+            <h2>Only on Shopkart at Rs <u>{{ a.price }}</u></h2>
+            <p>You can choose any of the Payment method to get your order.</p>
+            <h3 class="text-danger">CASH ON DELIVERY is available</h3>
+            <hr>
+            <p>In Stock only {{ a.stock }} left !hurry Up</p>
+            <p>Guaranteed delivery to pincode 226016 - Lucknow by Tomorrow 9pm with Same-Day Delivery — Order in the next 12 hours and 16 minutes Details</p>
+            <h4>{{ a.features }}</h4>
+        </div>
+        <div class="col-md-2 p-3">
+            <div class="card p-3">
+                <h4>100% Quality Assurance</h4>
+                <h4>At Shopkart</h4>
+                <hr>
+                {% if user.customer %}
+                    <a href="{% url 'app:nope' a.id %}" class="btn btn-primary">Click Here for Cash On delivery</a>
+
+                    <a href="/sumi" class="btn btn-outline-primary">Add To Cart</a>
+                {% else %}
+                <a href="{% url 'app:top' a.id %}"><div class="btn btn-outline-danger">Buy Now</div></a>
+                {% endif %}
+                <hr>
+            </div>
+        </div>
+        </div><hr>
+    <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
+        <h3 class="text-danger">
+            Save Extra with 2 Offers
+        </h3>
+        <ul>
+            <li>Get 10% cashback up to Rs. 100 using Visa Signature or Visa Infinite cards. Shop during the Visa Shopping Days starting 20th to end of every month. Applicable on shopping, recharges and bill payments. Cashback within 3 days from shipment.</li>
+            <li>Get 10% cashback using RuPay cards. Max Cashback - INR 100 if you are using RuPay card for first time on Amazon. INR 25 if you have used RuPay card earlier. Check here for your cashback eligibility Here's how</li>
+            <li><p>Get 25% back up to Rs.50 using Amazon Pay UPI. For Android App customers only. Valid once during the offer period. Cashback within 10 days. Set up Amazon Pay UPI Here's how</p></li>
+        </ul>
+    </div>
+    </div>
+    <hr>
+    <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-8">
+        <h3 class="text-danger">
+            Product description
+        </h3>
+        <p>When you want to look your very best, Philips has the right grooming solution for you. The new Philips 3000 series trimmers capture more low lying hair for efficient, even trimming results, so you can easily achieve the 3-day stubble, short beard or long beard look you want. With its innovative Lift and Trim system the new trimmers cut up to 30 percent faster. Easy to use and built to last, the new trimmers last up to 6 x longer vs ordinary trimmers.  Self-sharpening blades are long lasting and stay as sharp as on day one, while rounded tips and combs are gentle on your skin preventing irritation.</p>
+    </div>
+    </div>
+
+{% block javascript %}
+    <script src="{% static 'bootstrap/js/ajax.jquery.min.js' %}"></script>
+    <script src="{% static 'jquery.magnify.js' %}"></script>
+    <script src="{% static 'jquery.magnify-mobile.js' %}"></script>
+
+    {% endblock %}
+
+
+{% endblock %}
+
+{% include 'footer.html' %}

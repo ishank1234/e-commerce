@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+{% include 'navbar.html' %}
+
+
+    <div class="row my-4">
+    <div class="col-md-4">
+        <center><img src="{{ a.img.url }}" width="280px" height="auto"></center>
+    </div>
+    <div class="col-md-4 my-5">
+        <h2 class="text-danger">{{ a.name }}</h2>
+        <h3>Brand: {{ a.brand }}</h3>
+                <h3 class="text-primary">Thank You Mr.{{ user.customer.name }}. </h3>
+                <h5>Your Order has been placed and will be delivered to you within 7 working days.</h5>
+                <center><h3>Just pay Rs {{ a.price }}, After receiving your order.</h3></center>
+    </div>
+    <div class="col-md-3 my-5">
+        <h3>Return Policy</h3>
+        <center>We are always providing a quality product to our customers. In case the product is damaged or in any other case <u>Easily return policy is available</u> within 7 working days. </u> </center>
+    </div>
+    </div>
+
+    <hr>
+    <center><h2 class="text-primary">You can also try </h2>
+        <h3>Our More collection</h3>
+    </center>
+
+    <div class="container">
+    <div class="row my-4">
+        <div class="row bg-white">
+            {% for j in c.product_set.all %}
+                <center>
+                    <div class="item">
+                        <a href="{% url 'app:yoo' j.id %}"><img src="{{ j.img.url }}" width="250px" height="250px" class="img m-3"></a><br>
+                        <h3 class="m-3 ">{{ j.name }}</h3>
+                        <p class="m-2">Rs{{ j.price }} Only/</p>
+                    </div>
+                </center>
+            {% endfor %}
+            <br>
+            <hr>
+    </div>
+    </div>
+    </div>
+
+
+{% endblock %}

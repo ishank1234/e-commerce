@@ -1,0 +1,28 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-md p-3 bg-white sticky-top ">
+    <div class="container text-dark">
+        <a href="#" class="navbar-brand op">Shopkart.in</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#dropdownNavbar">
+            <span class="fa fa-3x fa-envelope"></span>
+        </button>
+        <div class="collapse navbar-collapse text-right" id="dropdownNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="/home" class="nav-link  oyo">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link  oyo">About Us</a></li>
+                {% if user.customer %}
+                <li class="nav-item"><a href="/cust" class="nav-link oyo"> Welcome {{ user.customer }}</a></li>
+                <li class="nav-item"><a href="/ishank" class="nav-link oyo">LogOut</a></li>
+                {% else %}
+                <li class="nav-item"><a href="/log" class="nav-link  oyo">Log in </a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+        <form class="form-inline" action="/search" method="post">
+            {% csrf_token %}
+            <input type="text" class="form-control" name="t1" placeholder="search...">
+            <button type="submit" class="btn btn-outline-dark">Submit</button>
+        </form>
+    </div>
+</nav>

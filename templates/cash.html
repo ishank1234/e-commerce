@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $(".lol").hide();
+        $("button").click(function(){
+           $(".lol").show();
+        });
+    });
+
+    </script>
+{% endblock %}
+{% block body %}
+{% include 'navbar.html' %}
+
+    <div class="row my-4">
+    <div class="col-md-4">
+        <center><img src="{{ a.img.url }}" width="280px" height="auto"></center>
+    </div>
+    <div class="col-md-4 my-5">
+        <h2 class="text-danger">{{ a.name }}</h2>
+        <h3>Brand: {{ a.brand }}</h3>
+                <h5>Place your order at</h5>
+                <h5>{{ user.customer.address }}</h5>
+                <h5>{{ user.customer.city }}</h5>
+                <h5>{{ user.customer.state }}</h5>
+        <a href="/thanks" class="btn btn-outline-primary">Place your Order</a>
+        <button type="button" class="btn btn-primary">Modify your address</button>
+    </div>
+    <div class="col-md-3 my-5">
+        <h3>Return Policy</h3>
+        <center>We are always providing a quality product to our customers. In case the product is damaged or in any other case <u>Easily return policy is available</u> within 7 working days. </u> </center>
+    </div>
+    </div>
+    <hr>
+
+    <div class="container lol">
+        <center><h2 class="text-primary">Address Modification Form</h2></center>
+    <form class="form-group"  action="./modify" method="post">
+            {% csrf_token %}
+    <div class="row my-5" style="margin-left:100px;">
+
+        <div class="col-md-6">
+            <label>Name</label>
+            <input type="text" required name="t1" value="{{ user.customer.name }}" class="form-control">
+
+            <label>Contact Number</label>
+            <input type="number" name="t4" required class="form-control">
+            <label>PIN</label>
+            <input type="number" name="t5" required class="form-control">
+            <label>Address</label>
+            <textarea rows="4" cols="26" name="t6" required class="form-control"></textarea>
+
+        </div>
+        <div class="col-md-6">
+            <label>City</label>
+            <input type="text" name="t7" required class="form-control">
+            <label>State</label>
+            <input type="text" name="t8" required class="form-control">
+            <label>Country</label>
+            <input type="text" name="t9" required class="form-control" value="India">
+            <br>
+            <input type="submit" class="btn btn-outline-dark" value="Register">
+            <input type="reset" class="btn btn-dark" value="Reset">
+
+        </div>
+            </form>
+    </div>
+    </div>
+
+{% endblock %}
